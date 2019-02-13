@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: eshop-member
+
+server:
+  port: 9400
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://hedao:hedao123@10.1.69.100:1111/eureka/
+
+security:
+  oauth2:
+    resource:
+      id: eshop-member
+      user-info-uri: http://localhost:9300/auth/api/member
+      prefer-token-info: false
